@@ -1,0 +1,636 @@
+/* Reset all styles to ensure consistency */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+/* Styling for the body */
+body {
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text color */
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden; /* Prevent scrollbars */
+    margin: 0;
+    padding: 0;
+}
+
+/* Container for the animated background */
+.animated-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+    opacity: 0.1; /* Make the background subtle */
+}
+
+/* Dog animation */
+.dog {
+    position: relative;
+    width: 22.5vmin;
+    height: 8.25vmin;
+}
+
+.dog::before {
+    content: "";
+    position: absolute;
+    bottom: -0.75vmin;
+    right: -0.15vmin;
+    width: 100%;
+    height: 1.5vmin;
+    background-color: rgba(28, 49, 48, 0.1);
+    border-radius: 50%;
+    z-index: -1000;
+    animation: shadow 10s cubic-bezier(0.3, 0.41, 0.18, 1.01) infinite;
+}
+
+.dog__head,
+.dog__head-c,
+.dog__snout,
+.dog__nose,
+.dog__eyes,
+.dog__ear-l,
+.dog__ear-r,
+.dog__body,
+.dog__tail,
+.dog__paws,
+.dog__bl-leg,
+.dog__fl-leg,
+.dog__fr-leg {
+    position: absolute;
+    animation: inherit;
+    transform: inherit;
+}
+
+/* Adapt sizes for responsiveness */
+.dog__head {
+    left: 1.5vmin;
+    bottom: 0;
+    width: 9.75vmin;
+    height: 8.25vmin;
+    border-radius: 4vmin 4vmin 3vmin 3vmin;
+    background-color: #ff8147;
+}
+
+.dog__head-c {
+    left: 1.5vmin;
+    bottom: 0;
+    width: 9.75vmin;
+    height: 8.25vmin;
+    z-index: -1;
+}
+
+.dog__snout {
+    left: -1.5vmin;
+    bottom: 0;
+    width: 7.5vmin;
+    height: 3.75vmin;
+    border-radius: 0 3vmin 4.5vmin 0;
+    background-color: #d7dbd2;
+}
+
+.dog__snout::before {
+    content: "";
+    left: -0.1vmin;
+    top: -0.15vmin;
+    width: 1.875vmin;
+    height: 1.125vmin;
+    border-radius: 0 3vmin 4.5vmin 0;
+    background-color: #1c3130;
+}
+
+.dog__nose {
+    top: -2vmin;
+    left: 40%;
+    width: 0.75vmin;
+    height: 2.4vmin;
+    border-radius: 0.5vmin;
+    background-color: #d7dbd2;
+}
+
+.dog__eye-l,
+.dog__eye-r {
+    top: -1vmin;
+    width: 0.7vmin;
+    height: 0.4vmin;
+    border-radius: 50%;
+    background-color: #1c3130;
+}
+
+.dog__eye-l {
+    left: 27%;
+}
+
+.dog__eye-r {
+    left: 65%;
+}
+
+.dog__ear-l,
+.dog__ear-r {
+    width: 10.5vmin;
+    height: 3.4vmin;
+    border-radius: 0 0 3vmin 3vmin;
+    background-color: #e26538;
+}
+
+.dog__ear-l {
+    top: 1.5vmin;
+    left: 6vmin;
+    transform: rotateZ(-50deg);
+    z-index: -1;
+}
+
+.dog__ear-r {
+    top: 1.5vmin;
+    right: 3vmin;
+    transform: rotateZ(20deg);
+    z-index: -2;
+}
+
+.dog__body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    bottom: 0.3vmin;
+    left: 3.75vmin;
+    width: 18.75vmin;
+    height: 7.2vmin;
+    border-radius: 3vmin 6vmin 1.5vmin 6vmin;
+    background-color: #ff702e;
+    z-index: -2;
+}
+
+.dog__tail {
+    right: -3vmin;
+    height: 1.5vmin;
+    width: 4.5vmin;
+    background-color: #e96839;
+    border-radius: 1.5vmin;
+}
+
+.dog__paws {
+    bottom: 0;
+    left: 7.5vmin;
+    width: 12vmin;
+    height: 3vmin;
+}
+
+.dog__bl-leg {
+    left: -3vmin;
+    z-index: -10;
+}
+
+.dog__bl-paw::before {
+    background-color: #bec4b6;
+}
+
+.dog__bl-top {
+    background-image: linear-gradient(80deg, transparent 20%, #e96839 20%);
+}
+
+.dog__fl-leg {
+    left: 0;
+    z-index: 10;
+}
+
+.dog__fl-paw::before {
+    background-color: #d7dbd2;
+}
+
+.dog__fr-leg {
+    right: 0;
+}
+
+.dog__fr-paw::before {
+    background-color: #d7dbd2;
+}
+
+/* Keyframe animations */
+
+@keyframes head {
+    0%,
+    10%,
+    20%,
+    26%,
+    28%,
+    90%,
+    100% {
+        height: 8.25vmin;
+        bottom: 0;
+        transform-origin: bottom right;
+        transform: rotateZ(0);
+    }
+
+    5%,
+    15%,
+    22%,
+    24%,
+    30% {
+        height: 8.1vmin;
+    }
+
+    32%,
+    50% {
+        height: 8.25vmin;
+    }
+
+    55%,
+    60% {
+        bottom: 0.75vmin;
+        transform-origin: bottom right;
+        transform: rotateZ(0);
+    }
+
+    70%,
+    80% {
+        bottom: 0.75vmin;
+        transform-origin: bottom right;
+        transform: rotateZ(10deg);
+    }
+}
+
+@keyframes body {
+    0%,
+    10%,
+    20%,
+    26%,
+    28%,
+    32%,
+    100% {
+        height: 7.2vmin;
+    }
+
+    5%,
+    15%,
+    22%,
+    24%,
+    30% {
+        height: 7.05vmin;
+    }
+}
+
+@keyframes ear-l {
+    0%,
+    10%,
+    20%,
+    26%,
+    28%,
+    82%,
+    100% {
+        transform: rotateZ(-50deg);
+    }
+
+    5%,
+    15%,
+    22%,
+    24% {
+        transform: rotateZ(-48deg);
+    }
+
+    30%,
+    31% {
+        transform: rotateZ(-30deg);
+    }
+
+    32%,
+    80% {
+        transform: rotateZ(-60deg);
+    }
+}
+
+@keyframes ear-r {
+    0%,
+    10%,
+    20%,
+    26%,
+    28% {
+        transform: rotateZ(20deg);
+    }
+
+    5%,
+    15%,
+    22%,
+    24% {
+        transform: rotateZ(18deg);
+    }
+
+    30%,
+    31% {
+        transform: rotateZ(10deg);
+    }
+
+    32% {
+        transform: rotateZ(25deg);
+    }
+}
+
+@keyframes snout {
+    0%,
+    10%,
+    20%,
+    26%,
+    28%,
+    82%,
+    100% {
+        height: 3.75vmin;
+    }
+
+    5%,
+    15%,
+    22%,
+    24% {
+        height: 3.45vmin;
+    }
+}
+
+@keyframes snout-b {
+    0%,
+    10%,
+    20%,
+    26%,
+    28%,
+    98%,
+    100% {
+        width: 1.875vmin;
+    }
+
+    5%,
+    15%,
+    22%,
+    24% {
+        width: 1.8vmin;
+    }
+
+    34%,
+    98% {
+        width: 1.275vmin;
+    }
+}
+
+@keyframes shadow {
+    0%,
+    10%,
+    20%,
+    26%,
+    28%,
+    30%,
+    84%,
+    100% {
+        width: 99%;
+    }
+
+    5%,
+    15%,
+    22%,
+    24% {
+        width: 101%;
+    }
+
+    34%,
+    81% {
+        width: 96%;
+    }
+}
+
+@keyframes eye {
+    0%,
+    30% {
+        width: 0.675vmin;
+        height: 0.3vmin;
+    }
+
+    32%,
+    59%,
+    90%,
+    100% {
+        width: 0.525vmin;
+        height: 0.525vmin;
+        transform: translateY(0);
+    }
+
+    60%,
+    75% {
+        transform: translateY(-0.3vmin);
+    }
+
+    80%,
+    85% {
+        transform: translateY(0.15vmin);
+    }
+}
+
+/* ChatBot Interface */
+#messages {
+    flex: 1;
+    padding: 10px 20px;
+    overflow-y: auto;
+}
+
+#messages .msgContainer {
+    margin-bottom: 10px;
+}
+
+.right, .left {
+    padding: 12px 20px;
+    margin: 10px 0;
+    display: inline-block;
+    border-radius: 12px;
+    max-width: 70%;
+    word-wrap: break-word;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.right {
+    background-color: #40996F;
+    color: #ffffff;
+    float: right;
+    clear: both;
+}
+
+.left {
+    background-color: #555555;
+    color: #ffffff;
+    float: left;
+    clear: both;
+}
+
+#inputSystem {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #444;
+    background-color: #2a2a2a;
+}
+
+#msg {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 20px;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+#msg:focus {
+    outline: none;
+    border-color: #40996F;
+}
+
+#sendIcon {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#sendIcon:hover {
+    transform: scale(1.1);
+}
+
+/* Scrollbar Styling */
+#messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+#messages::-webkit-scrollbar-track {
+    background: #2a2a2a;
+}
+
+#messages::-webkit-scrollbar-thumb {
+    background-color: #4e4e5f;
+    border-radius: 10px;
+    border: 3px solid transparent;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .right, .left {
+        max-width: 85%;
+        font-size: 14px;
+    }
+    #msg {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 0;
+        margin: 0;
+    }
+
+    .right, .left {
+        max-width: 100%;
+        font-size: 14px;
+    }
+
+    #msg {
+        font-size: 12px;
+        margin-right: 5px;
+    }
+
+    #sendIcon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .dog {
+        width: 50%;
+        height: auto;
+    }
+}
+* {
+    box-sizing: border-box;
+  }
+  
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  [class*="col-"] {
+    float: left;
+    padding: 15px;
+  }
+  
+  html {
+    font-family: "Lucida Sans", sans-serif;
+  }
+  
+  .header {
+    background-color: #9933cc;
+    color: #ffffff;
+    padding: 15px;
+  }
+  
+  .menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menu li {
+    padding: 8px;
+    margin-bottom: 7px;
+    background-color: #33b5e5;
+    color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  }
+  
+  .menu li:hover {
+    background-color: #0099cc;
+  }
+  
+  .aside {
+    background-color: #33b5e5;
+    padding: 15px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  }
+  
+  .footer {
+    background-color: #0099cc;
+    color: #ffffff;
+    text-align: center;
+    font-size: 12px;
+    padding: 15px;
+  }
+  
+  /* For mobile phones: */
+  [class*="col-"] {
+    width: 100%;
+  }
+  
+  @media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+  }
